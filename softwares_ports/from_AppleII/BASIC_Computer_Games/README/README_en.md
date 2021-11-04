@@ -1,0 +1,106 @@
+# AppleII realoaded
+
+## BASIC Computer Games
+
+101 games from the book _BASIC COMPUTER GAMES_ (David H. Ahl, 1978), refactored with and for nowadays' techs.
+
+Actually those aren't all games. Some are just fun display. But a few are actually great rich stuff !
+
+### Games list
+
+- 23 Matches
+- 3-D Plot
+- 3-D Tic Tac Toe
+- Acey Ducey
+- Amazing
+- Animal
+- Awari
+- Bagels
+- Banner
+- Basketball
+- Batnum
+- Battle
+- Blackjack
+- Bombardment
+- Bombs Away
+- Bounce
+- Bowling
+- Boxing
+- Bug
+- Bullfight
+- Bullseye
+- Bunny
+- Buzzword
+- Calendar
+- Change
+- Checkers
+- Chemist
+- Chief
+- Chomp
+- Civil War
+- Combat
+- Craps
+- Cube
+- Depth Charge
+- Diamond
+- Dice
+- Digits
+- Even Wins
+- Flip Flop
+- Football
+- Fur Trader
+- Golf
+- Gomoko
+- Guess
+- Gunner
+- Hammurabi
+- Hangman
+- Hello
+- Hexapawn
+- Hi-Lo
+- High I-Q
+- Hockey
+- Horserace
+- Hurkle
+- Kinema
+- King
+- Letter
+- Life
+- Life For Two
+- Literature Quiz
+- Love
+- Lunar LEM Rocket
+- Master Mind(r)
+- Math Dice
+- Mugwump
+- Name
+- Nicomachus
+- Nim
+- Number
+- One Check
+- Orbit
+- Pizza
+- Poetry
+- Poker
+- Queen
+- Reverse
+- Rock, Scissors, Paper
+- Roulette
+- Russian Roulette
+- Salvo
+- Sine Wave
+- Slalom
+- Slots
+- Splat
+- Stars
+- Stock Market
+- Super Star Trek(r)
+- Synonym
+- Target
+- Tic Tac Toe
+- Tower
+- Train
+- Trap
+- War
+- Weekday
+- Word
