@@ -1,4 +1,4 @@
-# AppleII realoaded
+# AppleII Reloaded
 
 ## BASIC Computer Games
 
