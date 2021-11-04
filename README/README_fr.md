@@ -1,8 +1,8 @@
-# AppleII Reloaded
+# Apple II Reloaded
 
-Software ports from and to *Apple II*, plus stuff for those who want to develop for *Apple II*.
+Portage de logiciels depuis *Apple II* et vers AppleII, plus quelques trucs pour qui souhaite développer pour *Apple II*.
 
-## Target Machines
+## Machines cible
 
 - Apple ][
 - Apple ][+
@@ -18,7 +18,7 @@ Software ports from and to *Apple II*, plus stuff for those who want to develop 
 - Apple Platinium //e
 - Apple IIgs
 
-## Target languages and formats
+## Langages et formats cible
 
 - Integer BASIC
 - AppleSoft BASIC
@@ -29,8 +29,8 @@ Software ports from and to *Apple II*, plus stuff for those who want to develop 
 - 65c02 Assembly
 - Shape tables
 
-## Ported softwares
+## Logiciels portés
 
-### From *Apple II*
+### Depuis *Apple II*
 
-### To *Apple II*
+### Vers *Apple II*
