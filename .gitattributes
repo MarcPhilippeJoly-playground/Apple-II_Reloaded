@@ -1,0 +1,3 @@
+*.basic linguist-language=BASIC
+*.applesoftbasic linguist-language=AppleSoft-BASIC
+*.abasic linguist-language=AppleSoft-BASIC
