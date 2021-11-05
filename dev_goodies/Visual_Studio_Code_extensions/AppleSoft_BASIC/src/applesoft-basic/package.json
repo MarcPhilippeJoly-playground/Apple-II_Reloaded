@@ -10,16 +10,29 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "applesoftbasic",
-            "aliases": ["AppleSoft BASIC", "applesoftbasic"],
-            "extensions": [".basic",".applesoftbasic"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "applesoftbasic",
-            "scopeName": "source.applesoftbasic",
-            "path": "./syntaxes/applesoftbasic.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "applesoftbasic",
+                "aliases": [
+                    "AppleSoft BASIC",
+                    "applesoftbasic"
+                ],
+                "extensions": [
+                    ".applesoftbasic",
+                    ".abasic",
+                    ".abas",
+                    ".bas",
+                    ".basic"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "applesoftbasic",
+                "scopeName": "source.applesoftbasic",
+                "path": "./syntaxes/applesoftbasic.tmLanguage.json"
+            }
+        ]
     }
 }
