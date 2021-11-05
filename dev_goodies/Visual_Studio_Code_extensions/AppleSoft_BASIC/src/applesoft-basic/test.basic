@@ -1,0 +1,3 @@
+100 PRINT "HELLO WORLD" REM this is a hello world
+110 GOTO 100 REM comment
+120 GOSUB 110

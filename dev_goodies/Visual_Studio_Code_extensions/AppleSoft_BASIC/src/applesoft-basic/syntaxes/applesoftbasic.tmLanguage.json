@@ -1,0 +1,93 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "AppleSoft BASIC",
+	"patterns": [
+		{
+			"include": "#tag"
+		},
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#control"
+		},
+		{
+			"include": "#operator"
+		},
+		{
+			"include": "#reserved"
+		},
+		{
+			"include": "#type"
+		},
+		{
+			"include": "#string"
+		}
+	],
+	"repository": {
+		"tag": {
+			"patterns": [
+				{
+					"name": "markup.heading.applesoftbasic",
+					"match": "^\\d+\\b"
+				},
+				{
+					"name": "markup.heading.applesoftbasic",
+					"match": "(?<=\\b(GOTO|GOSUB|THEN)\\s+)\\d+(?=(\\s|$))"
+				}
+			]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.applesoftbasic",
+					"match": "\\bREM\\b[^\\n\\r]*"
+				}
+			]
+		},
+		"control": {
+			"patterns": [
+				{
+					"name": "keyword.control.applesoftbasic",
+					"match": "\\b(\\&|CALL|CONT|END|FOR|GOSUB|GOTO|IF|INPUT|INT|LOG|NEXT|NOTRACE|ON|ONERR|OR|PDL|POP|RESUME|RETURN|RUN|STEP|STOP|THEN|TO|TRACE|USR|WAIT)\\b"
+				}
+			]
+		},
+		"operator": {
+			"patterns": [
+				{
+					"name": "keyword.operator.applesoftbasic",
+					"match": "\\b(ABS|AND|ASC|ATN|CHR\\$|COS|EXP|INT|LEFT\\$|LEN|LOG|MID\\$|NEXT|NOT|ON|OR|PDL|POS|RIGHT\\$|RND|SGN|SIN|SQR|STR\\$|TAN|VAL)\\b"
+				}
+			]
+		},
+		"reserved": {
+			"patterns": [
+				{
+					"name": "keyword.other.applesoftbasic",
+					"match": "\\b(CLEAR|COLOR\\=|DATA|DEL|DIM|DRAW|EXP|FLASH|FRE|GET|GR|HCOLOR\\=|HGR|HGR2|HIMEM\\:|HLIN|HOME|HPLOT|HTAB|IN#|INT|INVERSE|LIST|LOAD|LOG|LOMEM\\:|NEW|NEXT|NORMAL|ON|OR|PDL|PEEK|PLOT|POKE|PRINT|PR#|READ|RECALL|RESTORE|ROT\\=|SAVE|SCALE\\=|SGN|SHLOAD|SPC|SPEED\\=|STORE|TAB|TEXT|VLIN|VTAB|XPLOT|XDRAW)\\b"
+				}
+			]
+		},
+		"type": {
+			"patterns": [
+				{
+					"name": "storage.type.applesoftbasic",
+					"match": "\\b(DEF|FN|LET)\\b"
+				}
+			]
+		},
+		"string": {
+			"name": "string.quoted.double.applesoftbasic",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.applesoftbasic",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.applesoftbasic"
+}

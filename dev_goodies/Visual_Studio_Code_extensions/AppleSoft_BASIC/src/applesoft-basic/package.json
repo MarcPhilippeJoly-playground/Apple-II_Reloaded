@@ -1,0 +1,25 @@
+{
+    "name": "applesoft-basic",
+    "displayName": "AppleSoft BASIC",
+    "description": "AppleSoft BASIC syntax coloring",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.61.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "applesoftbasic",
+            "aliases": ["AppleSoft BASIC", "applesoftbasic"],
+            "extensions": [".basic",".applesoftbasic"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "applesoftbasic",
+            "scopeName": "source.applesoftbasic",
+            "path": "./syntaxes/applesoftbasic.tmLanguage.json"
+        }]
+    }
+}
