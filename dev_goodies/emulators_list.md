@@ -13,9 +13,8 @@ url: <https://sourceforge.net/projects/agatemulator/>
 
 Apple 2 and Agat 7/9 emulator
 
-require: NPAPI* web browsers 
+require: NPAPI(*) web browsers
 (*):Netscape Plugin Application Programming Interface
 url: <https://sourceforge.net/projects/agatemulator/>
 
-
-...  more on http://www.emu-france.com/emulateurs/10-ordinateurs/105-apple-ii/
+...  more on <http://www.emu-france.com/emulateurs/10-ordinateurs/105-apple-ii/>
