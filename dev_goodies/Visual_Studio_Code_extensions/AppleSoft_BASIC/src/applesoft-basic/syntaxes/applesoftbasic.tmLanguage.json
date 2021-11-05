@@ -3,7 +3,10 @@
 	"name": "AppleSoft BASIC",
 	"patterns": [
 		{
-			"include": "#tag"
+			"include": "#number"
+		},
+		{
+			"include": "#type"
 		},
 		{
 			"include": "#comment"
@@ -18,7 +21,10 @@
 			"include": "#reserved"
 		},
 		{
-			"include": "#type"
+			"include": "#tag"
+		},
+		{
+			"include": "#name"
 		},
 		{
 			"include": "#string"
@@ -28,11 +34,11 @@
 		"tag": {
 			"patterns": [
 				{
-					"name": "markup.heading.applesoftbasic",
+					"name": "macro.applesoftbasic",
 					"match": "^\\d+\\b"
 				},
 				{
-					"name": "markup.heading.applesoftbasic",
+					"name": "macro.applesoftbasic",
 					"match": "(?<=\\b(GOTO|GOSUB|THEN)\\s+)\\d+(?=(\\s|$))"
 				}
 			]
@@ -49,7 +55,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.applesoftbasic",
-					"match": "\\b(\\&|CALL|CONT|END|FOR|GOSUB|GOTO|IF|INPUT|INT|LOG|NEXT|NOTRACE|ON|ONERR|OR|PDL|POP|RESUME|RETURN|RUN|STEP|STOP|THEN|TO|TRACE|USR|WAIT)\\b"
+					"match": "\\b(\\&|CALL|CONT|END|FOR|GOSUB|GOTO|IF|NEXT|NOTRACE|ON|ONERR|POP|RESUME|RETURN|RUN|STEP|STOP|THEN|TO|TRACE|USR|WAIT)\\b"
 				}
 			]
 		},
@@ -57,23 +63,59 @@
 			"patterns": [
 				{
 					"name": "keyword.operator.applesoftbasic",
-					"match": "\\b(ABS|AND|ASC|ATN|CHR\\$|COS|EXP|INT|LEFT\\$|LEN|LOG|MID\\$|NEXT|NOT|ON|OR|PDL|POS|RIGHT\\$|RND|SGN|SIN|SQR|STR\\$|TAN|VAL)\\b"
+					"match": "\\b(\\=|-|\\^|\\*|\\/|\\+)\\b"
+				},
+				{
+					"name": "keyword.operator.logical.applesoftbasic",
+					"match": "\\b(\\=|<|>|<\\=|>\\=|<>|NOT|AND|OR)\\b"
 				}
 			]
 		},
 		"reserved": {
 			"patterns": [
 				{
+					"name": "support.function.applesoftbasic",
+					"match": "\\b(ABS|AND|ASC|ATN|COS|EXP|INT|LEN|LOG|NOT|OR|RND|SGN|SIN|SQR|TAN|VAL)\\b"
+				},
+				{
+					"name": "support.function.applesoftbasic",
+					"match": "\\b(CHR|LEFT|MID|RIGHT|STR)\\$"
+				},
+				{
 					"name": "keyword.other.applesoftbasic",
-					"match": "\\b(CLEAR|COLOR\\=|DATA|DEL|DIM|DRAW|EXP|FLASH|FRE|GET|GR|HCOLOR\\=|HGR|HGR2|HIMEM\\:|HLIN|HOME|HPLOT|HTAB|IN#|INT|INVERSE|LIST|LOAD|LOG|LOMEM\\:|NEW|NEXT|NORMAL|ON|OR|PDL|PEEK|PLOT|POKE|PRINT|PR#|READ|RECALL|RESTORE|ROT\\=|SAVE|SCALE\\=|SGN|SHLOAD|SPC|SPEED\\=|STORE|TAB|TEXT|VLIN|VTAB|XPLOT|XDRAW)\\b"
+					"match": "\\b(CLEAR|COLOR\\=|DATA|DEL|DRAW|FLASH|FRE|GET|GR|HCOLOR\\=|HGR|HGR2|HIMEM\\:|HLIN|HOME|HPLOT|HTAB|IN#|INPUT|INVERSE|LIST|LOAD|LOMEM\\:|NEW|NORMAL|PDL|POS|PEEK|PLOT|POKE|PRINT|PR#|READ|RECALL|RESTORE|ROT\\=|SAVE|SCALE\\=|SHLOAD|SPC|SPEED\\=|STORE|TAB|TEXT|VLIN|VTAB|XPLOT|XDRAW)\\b"
 				}
 			]
 		},
 		"type": {
 			"patterns": [
 				{
-					"name": "storage.type.applesoftbasic",
-					"match": "\\b(DEF|FN|LET)\\b"
+					"name": "storage.type.struct.applesoftbasic",
+					"match": "\\b(DIM)\\b"
+				},
+				{
+					"name": "support.type.applesoftbasic",
+					"match": "\\b(%|\\$)"
+				},
+				{
+					"name": "support.type.applesoftbasic",
+					"match": "\\b(DEF\\sFN|LET)\\b"
+				}
+			]
+		},
+		"name": {
+			"patterns": [
+				{
+					"name": "entity.name.variable.applesoftbasic",
+					"match": "\\b(?!CHR\\$|LEFT\\$|MID\\$|RIGHT\\$|STR\\$)([A-Z]+\\d*\\b(%|\\$)?)\\b"
+				}
+			]
+		},
+		"number": {
+			"patterns": [
+				{
+					"name": "number.applesoftbasic",
+					"match": "\\b(\\d+)\\b"
 				}
 			]
 		},
