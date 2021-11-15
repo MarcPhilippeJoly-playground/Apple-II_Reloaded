@@ -2,7 +2,7 @@
 
 ## BASIC Computer Games
 
-101 games from the book _BASIC COMPUTER GAMES_ (David H. Ahl, 1978), refactored with and for nowadays' techs.
+101 games from the book [_BASIC COMPUTER GAMES_ (David H. Ahl, 1978)](https://annarchive.com/files/Basic_Computer_Games_Microcomputer_Edition.pdf), refactored with and for nowadays' techs.
 
 Actually those aren't all games. Some are just fun display. But a few are actually great rich stuff !
 

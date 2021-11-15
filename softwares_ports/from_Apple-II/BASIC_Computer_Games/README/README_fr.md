@@ -1,7 +1,8 @@
 # BASIC Computer Games
 
-Portage dans les technologies actuelles des 101 jeux de l'ouvrage intitulé _BASIC COMPUTER GAMES_ édité par David H. Ahl en 1978.
+Portage dans les technologies actuelles des 101 jeux de l'ouvrage intitulé [_BASIC COMPUTER GAMES_ (David H. Ahl, 1978)](https://annarchive.com/files/Basic_Computer_Games_Microcomputer_Edition.pdf) édité par David H. Ahl en 1978.
 
+En fait, il ne s'agit pas que de jeux à proprement parler. Certains ne sont que des affichages procéduraux amusants. Mais quelques un sont profonds et remarquables.
 ## Liste des jeux
 
 - 23 Matches
