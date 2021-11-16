@@ -22,6 +22,10 @@ Compact versions of the original programs, modified to take as less memory as po
 
 Cleaned versions of the original programs, modified in order to maximise readability, are to be placed and found in ```modified/prettied``` directories.
 
+##### Improved
+
+Improved versions of the original programs, modified in order to fix a few issues or add some features, are to be placed and found in ```modified/improved``` directories.
+
 #### HGR
 
 Many original programs display graphics in text or GR mode. HGR version are refactored versions of the original program that rely on HGR mode of the Apple II in order to deliver more advanced visual experience.
