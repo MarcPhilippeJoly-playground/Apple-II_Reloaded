@@ -3,6 +3,9 @@
 	"name": "AppleSoft BASIC",
 	"patterns": [
 		{
+			"include": "#tag"
+		},
+		{
 			"include": "#number"
 		},
 		{
@@ -21,9 +24,6 @@
 			"include": "#reserved"
 		},
 		{
-			"include": "#tag"
-		},
-		{
 			"include": "#name"
 		},
 		{
@@ -34,11 +34,11 @@
 		"tag": {
 			"patterns": [
 				{
-					"name": "macro.applesoftbasic",
+					"name": "entity.name.applesoftbasic",
 					"match": "^\\d+\\b"
 				},
 				{
-					"name": "macro.applesoftbasic",
+					"name": "entity.name.applesoftbasic",
 					"match": "(?<=(GOTO|GOSUB|THEN)\\s+)\\d+(?=(\\s|$))"
 				}
 			]
@@ -62,12 +62,16 @@
 		"operator": {
 			"patterns": [
 				{
-					"name": "keyword.operator.applesoftbasic",
+					"name": "keyword.operator.arithmetic.applesoftbasic",
 					"match": "\\=|-|\\^|\\*|\\/|\\+"
 				},
 				{
+					"name": "keyword.operator.comparison.applesoftbasic",
+					"match": "\\=|<|>|<\\=|>\\=|<>"
+				},
+				{
 					"name": "keyword.operator.logical.applesoftbasic",
-					"match": "\\=|<|>|<\\=|>\\=|<>|NOT|AND|OR"
+					"match": "NOT|AND|OR"
 				}
 			]
 		},
@@ -114,7 +118,7 @@
 		"number": {
 			"patterns": [
 				{
-					"name": "number.applesoftbasic",
+					"name": "constant.numeric.applesoftbasic",
 					"match": "\\d+"
 				}
 			]
