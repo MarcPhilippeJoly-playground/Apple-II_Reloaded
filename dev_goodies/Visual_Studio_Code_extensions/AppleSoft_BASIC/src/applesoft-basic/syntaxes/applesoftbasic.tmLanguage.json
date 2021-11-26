@@ -3,6 +3,12 @@
 	"name": "AppleSoft BASIC",
 	"patterns": [
 		{
+			"include": "#string"
+		},
+		{
+			"include": "#comment"
+		},
+		{
 			"include": "#tag"
 		},
 		{
@@ -12,33 +18,30 @@
 			"include": "#type"
 		},
 		{
-			"include": "#comment"
-		},
-		{
 			"include": "#control"
 		},
 		{
 			"include": "#operator"
 		},
 		{
+			"include": "#separator"
+		},
+		{
 			"include": "#reserved"
 		},
 		{
 			"include": "#name"
-		},
-		{
-			"include": "#string"
 		}
 	],
 	"repository": {
 		"tag": {
 			"patterns": [
 				{
-					"name": "entity.name.applesoftbasic",
+					"name": "entity.name.label.applesoftbasic",
 					"match": "^\\d+\\b"
 				},
 				{
-					"name": "entity.name.applesoftbasic",
+					"name": "entity.name.label.applesoftbasic",
 					"match": "(?<=(GOTO|GOSUB|THEN)\\s+)\\d+(?=(\\s|$))"
 				}
 			]
@@ -55,7 +58,11 @@
 			"patterns": [
 				{
 					"name": "keyword.control.applesoftbasic",
-					"match": "\\&|CALL|CONT|END|FOR|GOSUB|GOTO|IF|NEXT|NOTRACE|ON|ONERR|POP|RESUME|RETURN|RUN|STEP|STOP|THEN|TO|TRACE|USR|WAIT"
+					"match": "\\&|CALL|CONT|END|FOR|GOSUB|GOTO|NEXT|NOTRACE|ON|ONERR|POP|RESUME|RETURN|RUN|STEP|STOP|THEN|TO|TRACE|USR|WAIT"
+				},
+				{
+					"name": "keyword.control.conditional.applesoftbasic",
+					"match": "IF"
 				}
 			]
 		},
@@ -72,6 +79,18 @@
 				{
 					"name": "keyword.operator.logical.applesoftbasic",
 					"match": "NOT|AND|OR"
+				}
+			]
+		},
+		"separator": {
+			"patterns": [
+				{
+					"name": "punctuation.separator.applesoftbasic",
+					"match": ":|,"
+				},
+				{
+					"name": "punctuation.separator.continuation.applesoftbasic",
+					"match": ";"
 				}
 			]
 		},
@@ -98,7 +117,7 @@
 					"match": "DIM"
 				},
 				{
-					"name": "support.type.applesoftbasic",
+					"name": "entity.name.type.applesoftbasic",
 					"match": "%|\\$"
 				},
 				{
@@ -126,7 +145,17 @@
 		"string": {
 			"name": "string.quoted.double.applesoftbasic",
 			"begin": "\"",
-			"end": "\""
+			"end": "\"",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.applesoftbasic"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.applesoftbasic"
+				}
+			}
 		}
 	},
 	"scopeName": "source.applesoftbasic"
