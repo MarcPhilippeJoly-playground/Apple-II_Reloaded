@@ -1,0 +1,192 @@
+10 DEFINT a,b,c,e-y : REM NOTE 1
+20 DIM h(128,128),C(320): REM NOTE 2
+
+30 REM******** MENU ********
+40 MODE 1:INK 1,18:PEN 1 : REM NOTE 3
+50 PRINT"1> nouvelle surface"
+60 PRINT"2> carte"
+70 PRINT"3> vue en strates"
+80 PRINT"4> vue en ombres"
+90 PRINT"5> vue en fil de fer"
+100 PRINT"6> le jeu"
+
+110 PRINT
+120 INPUT">",i:IF i>6 THEN 120
+130 ON i GOSUB 180,780,990,1160,860,1380
+140 PRINT CHR$(7) : REM BIP !
+150 WHILE INKEY$="":WEND: REM NOTE 4
+160 GOTO 40: REM GOTO 1380 : REM NOTE 5
+
+170 REM ***** PARAMETRES *****
+180 INPUT;"maille ( 0-3 ) :",m
+190 p=2^(7-m)
+200 PRINT"  >>pas =";p
+210 INPUT"hauteur de base :",h
+220 INPUT"deviation       :",d
+230 INPUT"graine          :",z
+240 INPUT"Taille (128, 64, 32) :",l
+250 REM--- CALCUL ---
+260 RANDOMIZE z : REM NOTE 6
+270 n=h/16:GOSUB 710
+280 PEN 3
+
+290 REM----- surface de base -----
+300 FOR x=0 TO l STEP p
+310 FOR y=0 TO l STEP p
+320 h(x,y)=RND*h:IF h(x,y)<n THEN h(x,y)=n
+330 c=h(x,y)/n:IF c>15 THEN c=15
+340 PLOT x*4,y*2,c : REM NOTE 7
+350 NEXT y,x
+
+360 REM----- calcul fractal ----
+370 WHILE p>1 : REM NOTE 8
+380 q=p/2:e=d/2
+390  FOR x=q TO l-q STEP p
+400  FOR y=q TO l-q STEP p
+410  h=(h(x-q,y-q))+h(x-q,y+q)+h(x+q,y-q)+h(x+q,y+q))/4+d*RND-e
+420  IF h<n THEN h=n
+430  c=h/n:IF c>15 THEN c=15
+440  h(x,y)=h:PLOT x*4,y*2,C
+450  NEXT y,x
+460  FOR x=p TO l-p STEP p
+470  FOR y=q TO l-q STEP p
+480  h=(h(x-q,y)+h(x+q,y)+h(x,y-q)+h(x,y+q))/4+d*RND-e
+490  IF h<n THEN h=n
+500  c=h/n:IF c>15 THEN c=15
+510  h(x,y)=h:PLOT x*4,y*2,c
+520  h=(h(y-q,x)+h(y+q,x)+h(y,x-q)+h(y,x+q))/4+d*RND-e
+530  IF h<n THEN h=n
+540  c=h/n: IF c>15 THEN c=15
+550  h(y,y)=h:PLOT y*4,x*2,c
+560  NEXT y,x
+570  FOR i=q TO l-q STEP p
+580  h=(h(0,i-q)+h(0,i+q)+h(q,i))/3+d*RND-e:IF h<n THEN h=n
+590  h(0,i)=h
+
+600  h=(h(l,i-q)+h(l,i+q))+h(l-q,i))/3+d*RND-e:IF h<n THEN h=n
+
+610  h(l,i)=h
+
+620  h=(h(i-q,l)+h(i+q,l)+h(i,l-q))/3+d*RND-e:IF h<n THEN h=n
+
+630  h(i,0)=h
+
+640  h=(h(i-q,l)+h(i+q,l)+h(i,l-q))/3+d*RND-e:IF h<n THEN h=n
+
+650  h(i,l)=h
+660  NEXT i
+670 p=p/2:d=d/2
+
+680 WEND : REM NOTE 8
+690 RETURN
+
+700 REM ****** AFFICHAGE ******
+710 MODE 0:ORIGIN 64,8
+720 RESTORE:FOR i=0 TO 15:REAN c:INK i,c:NEXT
+730 MOVE -32,0:FOR c=1 TO 15
+740 DRAWR 0,n+n,c
+750 NEXT c
+760 RETURN
+
+770 REM **** CARTE ****
+780 GOSUB 710
+790 FOR y=0 TO 128
+800 FOR x=0 TO 128
+810 c=h(x,y)/n:IF c>15 THEN c=15
+820 PLOT x*4,y*2,c
+830 NEXT x,y
+840 RETURN
+
+850 REN ****** FIL DE FER *****
+860 MODE 1:INK 1,14:o=160: k=0
+870 MOVE 0,40:DRAW 320,0,1:DRAW 640,40
+880 ERASE c:DIM c(320)
+890 FOR y=0 to 128 STEP 2:MOVE o*4-320,c(0+k)
+900 k=0;o=160-y:IF o<0 THEN k=-o
+910 FOR x=k TO 128 STEP 2
+920 t=h(x,y)+y+x
+930 h=MAX(c(x+o),t):c(x+o)=h
+940 DRAW (o+x)*4-320,h
+650 NEXT x:DRAW (o+x)*4-322,fh:fh=h
+960 NEXT y
+970 RETURN
+980 REM ****** STRATES *******
+990 MODE 0:GOSUB 1330:nm=n*4
+1000 FOR i=0 TO 80:h=h(0,i)+i:IF h<nm+i THEN h=nm+i
+1010 c(80-i)=h-2
+1020 h=h(i,0)+i:IF h<nm+i THEN h=nm+i
+1030 c(80+i)=h-2
+1040 NEXT i
+1050 FOR y=0 TO 128
+1060 FOR x=0 TO 127:nmx=nm+x+y
+1070 a=80-y+x:IF a<0 OR a>319 THEN 1130
+1080 h=(h(x,y)+x+y) : REM NOTE 9 AND &FFFE
+1090 c=h(x,y)/n:IF c>15 THEN c=15
+1100 IF h<nmx THEN h=nmx
+1110 IF h<=c(a) THEN PLOT a*4,c(a),0
+1120 IF h>c(a) THEN MOVE a*4,c(a)+2:DRAW a*4,h,c:c(a)=h
+1130 NEXT x,y
+1140 RETURN
+
+
+
+
+1150 REM ******* OMBRES *******
+1160 INK 1,1:INK 2,2:INK 3,11:INK 4,20
+1170 GOSUB 1340
+1180 FOR i=0 TO 80:c(80-i)=h(0,i)+i-2:c(80+i)=h(i,0)+i-2:NEXT
+1190 FOR y=0 TO l:o1=0:o2=0
+1200 FOR x=1 TO O STEP -1
+1210 a=80-y+x:IF a<0 OR a>319 THEN 1290
+1220 h=h(x,y)+x+y): REM Note 9 AND &FFFE
+1230 c=3
+1240 IF h(x,y)>=o1 THEN o1=h(x,y)+1 ELSE c=2
+1250 IF h(x,y)>=o2 THEN o2=h(x,y)+2 ELSE c=1
+1260 IF h<c(a) THEN PLOT a*4,c(a)-2,c+1:GOTO 1290
+1270 MOVE a*4,c(a),c:DRAW a*4,h
+1280 c(a):h+2
+1290 NEXT x,y
+1310.RETURN
+
+1320 REM ****** AFFICAGE ******
+1330 RESTORE:FOR i=0 TO 15:READ c:INK i,c:NEXT
+1340 MODE 0:MOVE 0,80:DRAW 320,0,2:DRAW 640,80
+1350 MOVE 320,0:DRAWR 0,h(0,0)
+1360 RETURN
+1370 DATA 0,1,2,11,24,22,19,18,12,9,3,13,10,20,23,26
+
+1380 REM ****** JEU ******
+1390 pv=100
+1400 XM=INT(RND(1))*20)+5
+1410 YM=INT(RND(1))*10)+5
+
+1420 REM ---AFFICHAGE CABANE---
+1430 PLOT XM*4,YM*2,13
+1440 DRAW (XM+2)*4,YM*2,13 : DRAW (XM+2)*4,(YM+2)*2,13
+1450 DRAW XM*4,(ym+2)*2,13 : DRAW XM*4,YM*2,13
+1460 REM ---PLACE JOUEUR---
+1470 XJ=INT(RND(1)*30)+10
+1480 YJ=INT(RND(1)*10)+10
+1490 PLOT XJ*4,YJ*2,1 : REM A RETIRER
+1500 LOCATE 2,2 : PRINT".............."
+1510 LOCATE 2,2 : PRINT"ALT. :"H(XJ,YJ)*100
+1520 LOCATE 2,3 : PRINT"........."
+1530 LOCATE 2,3 : PRINT"PV="PV
+1540 LOCATE 2,4 : PRINT".............."
+1550 LOCATE 2,4 : PRINT"DIR : ";
+1560 D$=INKY$ : IF D$="" THEN 1560
+1570 IF D$="N" AND YJ<80 THEN YJ=YJ+1 : GOTO 1620
+1580 IF D$="E" AND XJ<100 THEN XJ=XJ+1 : GOTO 1620
+1590 IF D$="S" AND YJ>5 THEN YJ=YJ-1 : GOTO 1620
+1600 IF D$="0" AND XJ>5 THEN XJ=XJ-1 : GOTO 1620
+1610 PRINT"NON '": GOTO 1540
+
+1620 REM---RESULTATS--------
+1630 PV=PV-1
+1640 TR=INT(RND(1)*100)
+1650 IF H(XJ,YJ)<5 AND TR<15 THEN PV=100 : LOCATE 2,2 : PRINT"EAU !"
+1660 IF PV<=0 THEN PRINT"VOUS ETES MORT !" : END
+1670 PLOT XJ*4,YJ*2,3 : REM A SUPPRIMER
+1680 DS=INT(((XJ-XM)^2)+((YJ-YM)^2))
+1690 IF DS<3 THEN PRINT"SAUVE !" : END
+1700 GOTO 1500
