@@ -16,7 +16,7 @@ As any Visual Studio Code extension. Copy the whole applesoft-basic folder [ther
 
 ## Extension Settings
 
-None. It just work. 
+None. It just works. 
 
 ## Known Issues
 
